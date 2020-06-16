@@ -51,20 +51,29 @@ password: [your Azure SQL password]
 ## Learn More
 
   -  **Structured**
-     -  [Azure SQL documentation overview](https://docs.microsoft.com/en-us/azure/azure-sql/) [MS Learn Module: Migrate your relational data stored in SQL Server to Azure SQL Database
+     -  [Azure SQL documentation overview](https://docs.microsoft.com/en-us/azure/azure-sql/) 
+        -  [MS Learn Module: Migrate your relational data stored in SQL Server to Azure SQL Database
 ](https://docs.microsoft.com/en-us/learn/modules/migrate-sql-server-relational-data/)
-     -  [Azure DB for MySQL documentation overview](https://docs.microsoft.com/en-us/azure/mysql/) [MS Learn Module: Migrate on-premises MySQL databases to Azure Database for MySQL
+     -  [Azure DB for MySQL documentation overview](https://docs.microsoft.com/en-us/azure/mysql/) 
+        -  [MS Learn Module: Migrate on-premises MySQL databases to Azure Database for MySQL
 ](https://docs.microsoft.com/en-us/learn/modules/migrate-on-premises-mysql-databases/)
-     -  [Azure DB for Postgres documentation overview](https://docs.microsoft.com/en-us/azure/postgresql/) [MS Learn Module:Migrate on-premises PostgreSQL databases to Azure Database for PostgreSQL
+     -  [Azure DB for Postgres documentation overview](https://docs.microsoft.com/en-us/azure/postgresql/) 
+        -  [MS Learn Module:Migrate on-premises PostgreSQL databases to Azure Database for PostgreSQL
  ](https://docs.microsoft.com/en-us/learn/modules/migrate-on-premises-postgresql-databases/)
   -  **Unstructured and Semi-structured**
-     -  [Storage account (Blobs, files, queues, disks, table, Data Lake) documentation overview](https://docs.microsoft.com/en-us/azure/storage/) [MS Learn Modules on Storage Accounts](https://docs.microsoft.com/en-us/learn/browse/?term=azure%20storage)
-     -  [Cosmos DB documentation overview](https://docs.microsoft.com/en-us/azure/cosmos-db/) [MS Learn Module: Work with NoSQL data in Azure Cosmos DB
+     -  [Storage account (Blobs, files, queues, disks, table, Data Lake) documentation overview](https://docs.microsoft.com/en-us/azure/storage/) 
+        -  [MS Learn Modules on Storage Accounts](https://docs.microsoft.com/en-us/learn/browse/?term=azure%20storage)
+     -  [Cosmos DB documentation overview](https://docs.microsoft.com/en-us/azure/cosmos-db/) 
+        -  [MS Learn Module: Work with NoSQL data in Azure Cosmos DB
  ](https://docs.microsoft.com/en-us/learn/paths/work-with-nosql-data-in-azure-cosmos-db/)
   - ** Additional services**
-     -  [Azure Data Factory documentation overview](https://docs.microsoft.com/en-us/azure/data-factory/) [MS Learn Module: Create production workloads on Azure Databricks with Azure Data Factory
+     -  [Azure Data Factory documentation overview](https://docs.microsoft.com/en-us/azure/data-factory/) 
+        -  [MS Learn Module: Create production workloads on Azure Databricks with Azure Data Factory
 ](https://docs.microsoft.com/en-us/learn/modules/create-production-workloads-azure-databricks-azure-data-factory/)
-     -  [Azure Stream Analytics documentation overview](https://docs.microsoft.com/en-us/azure/stream-analytics/) [Implement a Data Streaming Solution with Azure Streaming Analytics](https://docs.microsoft.com/en-us/learn/paths/implement-data-streaming-with-asa/)
-     -  [Azure Databricks documentation overview](https://docs.microsoft.com/en-us/azure/azure-databricks/) [MS Learn Module: Read and write data in Azure Databricks](https://docs.microsoft.com/en-us/learn/modules/read-write-data-azure-databricks/)
-     -  [Azure Notebooks documentation overview](https://docs.microsoft.com/en-us/azure/notebooks/) [MS Learn Module: Introduction to machine learning with Python and Azure Notebooks
+     -  [Azure Stream Analytics documentation overview](https://docs.microsoft.com/en-us/azure/stream-analytics/) 
+        -  [Implement a Data Streaming Solution with Azure Streaming Analytics](https://docs.microsoft.com/en-us/learn/paths/implement-data-streaming-with-asa/)
+     -  [Azure Databricks documentation overview](https://docs.microsoft.com/en-us/azure/azure-databricks/) 
+        -  [MS Learn Module: Read and write data in Azure Databricks](https://docs.microsoft.com/en-us/learn/modules/read-write-data-azure-databricks/)
+     -  [Azure Notebooks documentation overview](https://docs.microsoft.com/en-us/azure/notebooks/) 
+        -  [MS Learn Module: Introduction to machine learning with Python and Azure Notebooks
 ](https://docs.microsoft.com/en-us/learn/paths/intro-to-ml-with-python/)
