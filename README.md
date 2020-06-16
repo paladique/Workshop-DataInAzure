@@ -5,7 +5,7 @@ This is a supplemental resource to the Intro to Data Storage in Azure presentati
 ## Summary
 
 - The cloud is a popular option for data storage because it manages some of the work it takes to keep you data secure, backed up and accessible to end users during fluctuations in traffic.
-- Considering Azure for data? It's easy to integrate with other Azure services and has many options for your data (learn more)[]  
+- Considering Azure for data? It's easy to integrate with other Azure services and has many options for your data [learn more](#learn-more)
 - Focus on your data with the tools you love
 
 ## Assessing your data
