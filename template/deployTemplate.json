@@ -3,64 +3,47 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sqlAdministratorLogin": {
-            "type": "string",
+            "type": "String",
             "metadata": {
                 "description": "The administrator username of the SQL Server."
             }
         },
         "sqlAdministratorLoginPassword": {
-            "type": "securestring",
+            "type": "SecureString",
             "metadata": {
                 "description": "The administrator password of the SQL Server."
             }
         },
-        "transparentDataEncryption": {
-            "type": "string",
-            "allowedValues": [
-                "Enabled",
-                "Disabled"
-            ],
-            "defaultValue": "Enabled",
-            "metadata": {
-                "description": "Enable or disable Transparent Data Encryption (TDE) for the database."
-            }
-        },
         "location": {
-            "type": "string",
             "defaultValue": "[resourceGroup().location]",
+            "type": "String",
             "metadata": {
                 "description": "Location for all resources."
             }
         },
-        "storageAccountName": {
-            "type": "string",
+        "resourceName": {
+            "type": "String",
             "metadata": {
-                "description": "Specifies the name of the Azure Storage account."
+                "description": "Prefix of the name of all your Azure resources (resourceName-uniquestring)."
             }
-        },
-        "containerName": {
-            "type": "string",
-            "defaultValue": "semi-structured-data",
-            "metadata": {
-                "description": "Specifies the name of the blob container."
-            }
-        },
-        "dataFactoryName": {
-            "type": "string"
         }
     },
     "variables": {
-        "sqlServerName": "[concat('sqlserver', uniqueString(subscription().id, resourceGroup().id))]",
-        "databaseName": "sample-db-with-tde",
+        "sqlServerName": "[concat('sqlserver-', parameters('resourceName'))]",
+        "databaseName": "demo-database",
         "databaseEdition": "Basic",
         "databaseCollation": "SQL_Latin1_General_CP1_CI_AS",
-        "databaseServiceObjectiveName": "Basic"
+        "databaseServiceObjectiveName": "Basic",
+        "containerName" :  "semi-structured-data",
+        "storageAccountName" :  "[concat('storageaccount', parameters('resourceName'))]",
+        "dataFactoryName" : "[concat('datafactory-', parameters('resourceName'))]"
     },
+
     "resources": [
         {
-            "name": "[variables('sqlServerName')]",
             "type": "Microsoft.Sql/servers",
             "apiVersion": "2019-06-01-preview",
+            "name": "[concat(variables('sqlServerName'), '/AllowAllWindowsAzureIps')]",
             "location": "[parameters('location')]",
             "tags": {
                 "displayName": "SqlServer"
@@ -72,10 +55,13 @@
             },
             "resources": [
                 {
-                    "name": "[variables('databaseName')]",
                     "type": "databases",
                     "apiVersion": "2019-06-01-preview",
+                    "name": "[variables('databaseName')]",
                     "location": "[parameters('location')]",
+                    "dependsOn": [
+                        "[variables('sqlServerName')]"
+                    ],
                     "tags": {
                         "displayName": "Database"
                     },
@@ -84,43 +70,39 @@
                         "collation": "[variables('databaseCollation')]",
                         "requestedServiceObjectiveName": "[variables('databaseServiceObjectiveName')]"
                     },
-                    "dependsOn": [
-                        "[variables('sqlServerName')]"
-                    ],
                     "resources": [
                         {
-                            "comments": "Transparent Data Encryption",
-                            "name": "current",
                             "type": "transparentDataEncryption",
                             "apiVersion": "2014-04-01-preview",
-                            "properties": {
-                                "status": "[parameters('transparentDataEncryption')]"
-                            },
+                            "name": "current",
                             "dependsOn": [
                                 "[variables('databaseName')]"
-                            ]
+                            ],
+                            "properties": {
+                                "status": "Enabled"
+                            }
                         }
                     ]
                 },
                 {
-                    "name": "AllowAllMicrosoftAzureIps",
                     "type": "firewallrules",
                     "apiVersion": "2015-05-01-preview",
+                    "name": "/AllowAllMicrosoftAzureIps",
                     "location": "[parameters('location')]",
+                    "dependsOn": [
+                        "[variables('sqlServerName')]"
+                    ],
                     "properties": {
                         "endIpAddress": "0.0.0.0",
                         "startIpAddress": "0.0.0.0"
-                    },
-                    "dependsOn": [
-                        "[variables('sqlServerName')]"
-                    ]
+                    }
                 }
             ]
         },
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2019-06-01",
-            "name": "[parameters('storageAccountName')]",
+            "name": "[variables('storageAccountName')]",
             "location": "[parameters('location')]",
             "sku": {
                 "name": "Standard_LRS",
@@ -134,34 +116,28 @@
                 {
                     "type": "blobServices/containers",
                     "apiVersion": "2019-06-01",
-                    "name": "[concat('default/', parameters('containerName'))]",
+                    "name": "[concat('default/', variables('containerName'))]",
                     "dependsOn": [
-                        "[parameters('storageAccountName')]"
+                        "[variables('storageAccountName')]"
                     ]
                 }
             ]
         },
         {
-            "apiVersion": "2018-06-01",
-            "name": "[parameters('dataFactoryName')]",
-            "location": "[parameters('location')]",
             "type": "Microsoft.DataFactory/factories",
+            "apiVersion": "2018-06-01",
+            "name": "[variables('dataFactoryName')]",
+            "location": "[parameters('location')]",
             "identity": {
                 "type": "SystemAssigned"
             },
-            "properties": {
-            }
+            "properties": {}
         }
-
     ],
     "outputs": {
-        "sqlServerFqdn": {
-            "type": "string",
-            "value": "[reference(concat('Microsoft.Sql/servers/', variables('sqlServerName'))).fullyQualifiedDomainName]"
-        },
-        "databaseName": {
-            "type": "string",
-            "value": "[variables('databaseName')]"
+          "storageAcctName": {
+            "type": "String",
+            "value": "[variables('storageAccountName')]"
         }
     }
 }
