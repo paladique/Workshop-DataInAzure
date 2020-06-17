@@ -29,7 +29,7 @@ We'll be using a data source to do a basic aggregation on a dataset from the [Az
 ### Create Azure Services
 1. Click this button to create a Storage Account, Azure SQL database, and Data Factory 
    
- [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpaladique%Workshop-DataInAzure%2Fmaster%2FdeployTemplate.json)
+ [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpaladique%Workshop-DataInAzure%2Fmaster%2Ftemplate%2FdeployTemplate.json)
    
    *Recommended: Once your Azure resources are deployed, pin it to your dashboard in the Azure Portal*
 
