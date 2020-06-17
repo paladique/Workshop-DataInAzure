@@ -91,3 +91,5 @@ Locate the name of your resource group and [follow these instructions](https://d
      -  [Azure Notebooks documentation overview](https://docs.microsoft.com/en-us/azure/notebooks/) 
         -  [MS Learn Module: Introduction to machine learning with Python and Azure Notebooks
 ](https://docs.microsoft.com/en-us/learn/paths/intro-to-ml-with-python/)
+
+- Info on [REST](https://www.codecademy.com/articles/what-is-rest) 
