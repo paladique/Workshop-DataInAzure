@@ -58,6 +58,10 @@ password: [your Azure SQL password]
 
 7. Follow the remaining instructions in the notebook.
 
+# Cleanup
+
+Locate the name of your resource group and [follow these instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal#delete-resource-group)
+
 ## Learn More
 
   -  **Structured**

@@ -39,7 +39,7 @@
         {
             "type": "Microsoft.Sql/servers",
             "apiVersion": "2019-06-01-preview",
-            "name": "[concat(variables('sqlServerName'), '/AllowAllWindowsAzureIps')]",
+            "name": "[variables('sqlServerName')]",
             "location": "[parameters('location')]",
             "tags": {
                 "displayName": "SqlServer"
