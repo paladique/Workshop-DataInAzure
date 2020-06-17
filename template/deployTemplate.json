@@ -31,7 +31,7 @@
     "variables": {
         "sqlServerName": "[concat('sqlserver-', parameters('resourceName'))]",
         "containerName" :  "semi-structured-data",
-        "storageAccountName" :  "[concat('storage', parameters('resourceName'))]",
+        "storageAccountName" :  "[concat('storage', uniqueString(parameters('resourceName')))]",
         "dataFactoryName" : "[concat('datafactory-', parameters('resourceName'))]"
     },
 
