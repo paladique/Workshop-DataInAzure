@@ -30,12 +30,8 @@
     },
     "variables": {
         "sqlServerName": "[concat('sqlserver-', parameters('resourceName'))]",
-        "databaseName": "demo-database",
-        "databaseEdition": "Basic",
-        "databaseCollation": "SQL_Latin1_General_CP1_CI_AS",
-        "databaseServiceObjectiveName": "Basic",
         "containerName" :  "semi-structured-data",
-        "storageAccountName" :  "[concat('storageaccount', parameters('resourceName'))]",
+        "storageAccountName" :  "[concat('storage', parameters('resourceName'))]",
         "dataFactoryName" : "[concat('datafactory-', parameters('resourceName'))]"
     },
 
@@ -54,36 +50,6 @@
                 "version": "12.0"
             },
             "resources": [
-                {
-                    "type": "databases",
-                    "apiVersion": "2019-06-01-preview",
-                    "name": "[variables('databaseName')]",
-                    "location": "[parameters('location')]",
-                    "dependsOn": [
-                        "[variables('sqlServerName')]"
-                    ],
-                    "tags": {
-                        "displayName": "Database"
-                    },
-                    "properties": {
-                        "edition": "[variables('databaseEdition')]",
-                        "collation": "[variables('databaseCollation')]",
-                        "requestedServiceObjectiveName": "[variables('databaseServiceObjectiveName')]"
-                    },
-                    "resources": [
-                        {
-                            "type": "transparentDataEncryption",
-                            "apiVersion": "2014-04-01-preview",
-                            "name": "current",
-                            "dependsOn": [
-                                "[variables('databaseName')]"
-                            ],
-                            "properties": {
-                                "status": "Enabled"
-                            }
-                        }
-                    ]
-                },
                 {
                     "type": "firewallrules",
                     "apiVersion": "2015-05-01-preview",

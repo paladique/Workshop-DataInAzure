@@ -11,19 +11,14 @@ This is a supplemental resource to the Intro to Data Storage in Azure presentati
 ## Assessing your data
 
 - What is the structure of your data?​
-
 - How much data will you be working with?​
-
 - Is having some of your data on premise important to you?​
-
 - What tools or services depend on your data right now?​
-
 - Will this data be accessed by many?
 
 ## Demo
 
-We'll be using two data sources to answer a question: Did reported COVID-19 infection rates increase after national holidays?
-We'll be using data from the [Azure Open Datasets Catalog](https://azure.microsoft.com/en-us/services/open-datasets/catalog/) on [Public Holidays](https://azure.microsoft.com/en-us/services/open-datasets/catalog/public-holidays/) and [COVID-19 Data Lake/Bing COVID-19 Data](https://azure.microsoft.com/en-us/services/open-datasets/catalog/bing-covid-19-data/). We'll be converting the structure of one of these data sets to another with Azure Data factory and using Azure Notebooks to view the data and form our query with [Pandas](https://pandas.pydata.org/).
+We'll be using a data source to do a basic aggregation on a dataset from the [Azure Open Datasets Catalog](https://azure.microsoft.com/en-us/services/open-datasets/catalog/) on [COVID-19 Data Lake/Bing COVID-19 Data](https://azure.microsoft.com/en-us/services/open-datasets/catalog/bing-covid-19-data/). We'll be converting the structure of one of these data sets to another with Azure Data factory and using Azure Notebooks to view the data and form our query with [Pandas](https://pandas.pydata.org/).
 
 ## Prerequisites
 
@@ -31,12 +26,27 @@ We'll be using data from the [Azure Open Datasets Catalog](https://azure.microso
 
 ## Instructions
 
-1. Use this template to create a Storage Account, and a Azure SQL database
-2. Create a Data Factory in the Azure Portal. Follow the "Create a Data Factory" section in this guide for instructions: [Create A Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
-3. In the Portal, create a blob container.
-4. Download [this json file](https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.json) and upload it to the blob container
-5. Download the notebook in this repo and upload it to [Azure Notebooks](https://notebooks.azure.com/)
-6. Add a configuration file named `myconfig.cfg` with the following:
+### Create Azure Services
+1. Click this button to create a Storage Account, Azure SQL database, and Data Factory 
+   
+ [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpaladique%Workshop-DataInAzure%2Fmaster%2FdeployTemplate.json)
+   
+   *Recommended: Once your Azure resources are deployed, pin it to your dashboard in the Azure Portal*
+
+2. Download [this JSON file](https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.json)
+
+### Setup Azure Services
+
+3. Go to the Azure portal and open your new Storage Account. It should start with `storage`, you can use the search window at the top of dashboard.
+4. On the left, open **Containers**
+5. Select the container labeled `semi-structured-data` > **Upload**. Upload the JSON file and `db-demo.bacpac` (in the template folder) to the the blob container. It should be the only one. [How to upload a blob to your container](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob)
+6. In the Azure portal, open your Azure SQL Server (starts with `sqlserver-`).
+   *1. You might need to add a firewall rule for your ip address. Go to Firewalls and Virtual Networks and click **+ Add client IP***
+7. In the Overview section of Azure SQL Server, select **Import Database** follow the prompts, select your storage account, `semi-structured-data` and the `db-demo.bacpac` file. Set the pricing tier to **Basic** and add a database name and click **Ok** [How to import a BACPAC file to Azure SQL](https://docs.microsoft.com/en-us/azure/azure-sql/database/database-import?tabs=azure-powershell#using-azure-portal)
+
+### Using the Notebook
+8. Download the notebook in this repo (`notebook-data`) and upload it to [Azure Notebooks](https://notebooks.azure.com/)
+9.  Add a configuration file named `myconfig.cfg` with the following:
   
   ```python
 [my_db]
@@ -66,7 +76,7 @@ password: [your Azure SQL password]
      -  [Cosmos DB documentation overview](https://docs.microsoft.com/en-us/azure/cosmos-db/) 
         -  [MS Learn Module: Work with NoSQL data in Azure Cosmos DB
  ](https://docs.microsoft.com/en-us/learn/paths/work-with-nosql-data-in-azure-cosmos-db/)
-  - ** Additional services**
+  - **Additional services**
      -  [Azure Data Factory documentation overview](https://docs.microsoft.com/en-us/azure/data-factory/) 
         -  [MS Learn Module: Create production workloads on Azure Databricks with Azure Data Factory
 ](https://docs.microsoft.com/en-us/learn/modules/create-production-workloads-azure-databricks-azure-data-factory/)
