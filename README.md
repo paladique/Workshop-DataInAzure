@@ -45,8 +45,8 @@ We'll be using a data source to do a basic aggregation on a dataset from the [Az
 7. In the Overview section of Azure SQL Server, select **Import Database** follow the prompts, select your storage account, `semi-structured-data` and the `db-demo.bacpac` file. Set the pricing tier to **Basic** and add a database name and click **Ok** [How to import a BACPAC file to Azure SQL](https://docs.microsoft.com/en-us/azure/azure-sql/database/database-import?tabs=azure-powershell#using-azure-portal)
 
 ### Using the Notebook
-8. Download the notebook in this repo (`notebook-data`) and upload it to [Azure Notebooks](https://notebooks.azure.com/)
-9.  Add a configuration file named `myconfig.cfg` with the following:
+8. Download/Clone the notebook content in this repo (`notebook-data` folder) and upload all three files to [Azure Notebooks](https://notebooks.azure.com/). 
+9.  Edit the configuration file named `myconfig.cfg` with the following:
   
   ```python
 [my_db]
@@ -56,7 +56,7 @@ username: [your Azure SQL username]
 password: [your Azure SQL password]
   ```
 
-7. Follow the remaining instructions in the notebook.
+10.  Follow the remaining instructions in the notebook named `Weekly US Infection Rates`
 
 # Cleanup
 
