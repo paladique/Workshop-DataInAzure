@@ -18,7 +18,7 @@ This is a supplemental resource to the Intro to Data Storage in Azure presentati
 
 ## Demo
 
-We'll be using a data source to do a basic aggregation on a dataset from the [Azure Open Datasets Catalog](https://azure.microsoft.com/en-us/services/open-datasets/catalog/) on [COVID-19 Data Lake/Bing COVID-19 Data](https://azure.microsoft.com/en-us/services/open-datasets/catalog/bing-covid-19-data/). We'll be converting the structure of one of these data sets to another with Azure Data factory and using Azure Notebooks to view the data and form our query with [Pandas](https://pandas.pydata.org/).
+The notebook for this demo explores a data source from the [Azure Open Datasets Catalog](https://azure.microsoft.com/en-us/services/open-datasets/catalog/) on [NOAA Integrated Surface Data (ISD)](https://azure.microsoft.com/en-us/services/open-datasets/catalog/noaa-integrated-surface-data). We'll be converting the structure of one of these data sets to another with Azure Data factory and using Azure Notebooks to view the data and form our query with [Pandas](https://pandas.pydata.org/).
 
 ## Prerequisites
 
@@ -33,13 +33,13 @@ We'll be using a data source to do a basic aggregation on a dataset from the [Az
    
    *Recommended: Once your Azure resources are deployed, pin it to your dashboard in the Azure Portal*
 
-2. Download [this JSON file](https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.json)
+2. Copy [this parquet file](notebook-data/weather.parquet) to your local machine.
 
 ### Setup Azure Services
 
 3. Go to the Azure portal and open your new Storage Account. It should start with `storage`, you can use the search window at the top of dashboard.
 4. On the left, open **Containers**
-5. Select the container labeled `semi-structured-data` > **Upload**. Upload the JSON file and `db-demo.bacpac` (in the template folder) to the the blob container. It should be the only one. [How to upload a blob to your container](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob)
+5. Select the container labeled `semi-structured-data` > **Upload**. Upload the parquet file and `db-demo.bacpac` (in the template folder) to the the blob container. It should be the only one. [How to upload a blob to your container](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob)
 6. In the Azure portal, open your Azure SQL Server (starts with `sqlserver-`).
    *1. You might need to add a firewall rule for your ip address. Go to Firewalls and Virtual Networks and click **+ Add client IP***
 7. In the Overview section of Azure SQL Server, select **Import Database** follow the prompts, select your storage account, `semi-structured-data` and the `db-demo.bacpac` file. Set the pricing tier to **Basic** and add a database name and click **Ok** [How to import a BACPAC file to Azure SQL](https://docs.microsoft.com/en-us/azure/azure-sql/database/database-import?tabs=azure-powershell#using-azure-portal)
@@ -56,7 +56,7 @@ username: [your Azure SQL username]
 password: [your Azure SQL password]
   ```
 
-10.  Follow the remaining instructions in the notebook named `Weekly US Infection Rates`
+10.  Follow the remaining instructions in the notebook named `Weather and Elevation`
 
 # Cleanup
 
