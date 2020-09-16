@@ -27,26 +27,54 @@ The notebook for this demo explores a data source from the [Azure Open Datasets 
 ## Instructions
 
 ### Create Azure Services
-1. Click this button to create a Storage Account, Azure SQL database, and Data Factory 
+1. Click this button to create Azure SQL database, and Data Factory 
    
  [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpaladique%2FWorkshop-DataInAzure%2Fmaster%2Ftemplate%2FdeployTemplate.json)
    
    *Recommended: Once your Azure resources are deployed, pin it to your dashboard in the Azure Portal*
 
-2. Copy [this parquet file](notebook-data/weather.parquet) to your local machine.
-
 ### Setup Azure Services
 
-3. Go to the Azure portal and open your new Storage Account. It should start with `storage`, you can use the search window at the top of dashboard.
-4. On the left, open **Containers**
-5. Select the container labeled `semi-structured-data` > **Upload**. Upload the parquet file and `db-demo.bacpac` (in the template folder) to the the blob container. It should be the only one. [How to upload a blob to your container](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob)
-6. In the Azure portal, open your Azure SQL Server (starts with `sqlserver-`).
-   *1. You might need to add a firewall rule for your ip address. Go to Firewalls and Virtual Networks and click **+ Add client IP***
-7. In the Overview section of Azure SQL Server, select **Import Database** follow the prompts, select your storage account, `semi-structured-data` and the `db-demo.bacpac` file. Set the pricing tier to **Basic** and add a database name and click **Ok** [How to import a BACPAC file to Azure SQL](https://docs.microsoft.com/en-us/azure/azure-sql/database/database-import?tabs=azure-powershell#using-azure-portal)
+1. In the Azure portal, open your MySQL Server (starts with `mysql-`).
+2. Go to **Connection Security** and click **+ Add client IP*** to add a firewall rule for your ip address.
+3. Set **Allow access to Azure Services** to **On**.
+4. Go back to the Overview in MySQL
+5. Click on the terminal icon at the top of the portal to open the Cloud Shell Terminal.
+
+#### Set up MySQL database in the Cloud Shell
+
+1. Connect to MySQL with the following command replace the `servername` and `adminname` with the values in the overview of MySQL.
+
+`mysql -h servername.mysql.database.azure.com -u adminname@servername -p`
+
+You're now connected to your new MySQL server. The following commands will set up the database and table:
+
+`CREATE DATABASE weather;`
+`USE weather;`
+
+```sql
+CREATE TABLE surfaceLevelWeather(
+    id serial PRIMARY KEY,
+    time DATETIME, 
+    latitude DOUBLE,
+    longitude DOUBLE,
+    elevation DOUBLE,
+    station VARCHAR(100),
+    temperature DOUBLE,
+    windSpeed DOUBLE,
+    windAngle INT,
+    currentWeatherCode INT,
+    currentWeather VARCHAR(50)
+);
+```
 
 ### Using the Notebook
-8. Download/Clone the notebook content in this repo (`notebook-data` folder) and upload all three files to [Azure Notebooks](https://notebooks.azure.com/). 
-9.  Edit the configuration file named `myconfig.cfg` with the following:
+
+1. Download/Clone the notebook content in this repo (`notebook-data` folder)
+2. Go to your created Azure Machine Learning service in the Portal > **Launch Now** to open the Machine Learning Studio
+3. Go to **Notebooks** > **Start Now**
+4.  Under **My Files**, select the upload button and upload the entire notebook folder.
+5.  Edit the configuration file named `myconfig.cfg` with the following:
   
   ```python
 [my_db]
