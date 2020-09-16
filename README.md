@@ -43,7 +43,7 @@ The notebook for this demo explores a data source from the [Azure Open Datasets 
 
 #### Set up MySQL database in the Cloud Shell
 
-1. Connect to MySQL with the following command replace the `servername` and `adminname` with the values in the overview of MySQL.
+6. Connect to MySQL with the following command replace the `servername` and `adminname` with the values in the overview of MySQL:
 
 `mysql -h servername.mysql.database.azure.com -u adminname@servername -p`
 
@@ -70,21 +70,21 @@ CREATE TABLE surfaceLevelWeather(
 
 ### Using the Notebook
 
-1. Download/Clone the notebook content in this repo (`notebook-data` folder)
-2. Go to your created Azure Machine Learning service in the Portal > **Launch Now** to open the Machine Learning Studio
-3. Go to **Notebooks** > **Start Now**
-4.  Under **My Files**, select the upload button and upload the entire notebook folder.
-5.  Edit the configuration file named `myconfig.cfg` with the following:
-  
-  ```python
-[my_db]
-server: [your Azure SQL server name]
-database: [your Azure SQL database name]
-username: [your Azure SQL username]
-password: [your Azure SQL password]
-  ```
+7. Download/Clone the notebook content in this repo (`notebook-data` folder)
+8. Go to your created Azure Machine Learning service in the Portal > **Launch Now** to open the Machine Learning Studio
+9. Go to **Notebooks** > **Start Now**
+10. Under **My Files**, select the upload button and upload the entire notebook folder.
+11. Edit the configuration file named `myconfig.cfg` and replace the `servername` and `adminname` with the values in the overview of MySQL.
 
-10.  Follow the remaining instructions in the notebook named `Weather and Elevation`
+```python
+[my_db]
+host:servername.mysql.database.azure.com
+user:adminname@servername
+password:mypassword
+database: mydatabase
+ ```
+
+12.   Follow the remaining instructions in the notebook named `Weather and Elevation`
 
 # Cleanup
 

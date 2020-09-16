@@ -5,13 +5,13 @@
         "sqlAdministratorLogin": {
             "type": "String",
             "metadata": {
-                "description": "The administrator username of the SQL Server."
+                "description": "The administrator username of the MySQL Server."
             }
         },
         "sqlAdministratorLoginPassword": {
             "type": "SecureString",
             "metadata": {
-                "description": "The administrator password of the SQL Server."
+                "description": "The administrator password of the MySQL Server."
             }
         },
         "location": {
@@ -29,65 +29,62 @@
         }
     },
     "variables": {
-        "sqlServerName": "[concat('sqlserver-', parameters('resourceName'))]",
-        "containerName" :  "semi-structured-data",
-        "storageAccountName" :  "[concat('storage', uniqueString(parameters('resourceName')))]",
+        "mySqlServerName": "[concat('mysql-', parameters('resourceName'))]",
         "dataFactoryName" : "[concat('datafactory-', parameters('resourceName'))]"
     },
 
     "resources": [
-        {
-            "type": "Microsoft.Sql/servers",
-            "apiVersion": "2019-06-01-preview",
-            "name": "[variables('sqlServerName')]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "displayName": "SqlServer"
+         {
+            "type": "Microsoft.DBforMySQL/servers",
+            "apiVersion": "2017-12-01",
+            "name": "[variables('mySqlServerName')]",
+            "location": "eastus",
+            "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
             },
             "properties": {
-                "administratorLogin": "[parameters('sqlAdministratorLogin')]",
+                "storageProfile": {
+                    "storageMB": 5120,
+                    "backupRetentionDays": 7,
+                    "geoRedundantBackup": "Disabled",
+                    "storageAutogrow": "Enabled"
+                },
+                "version": "5.7",
+                "sslEnforcement": "Enabled",
+                "minimalTlsVersion": "TLSEnforcementDisabled",
+                "infrastructureEncryption": "Disabled",
+                "publicNetworkAccess": "Enabled",
+                "administratorLogin" : "[parameters('sqlAdministratorLogin')]",
                 "administratorLoginPassword": "[parameters('sqlAdministratorLoginPassword')]",
-                "version": "12.0"
-            },
-            "resources": [
-                {
-                    "type": "firewallrules",
-                    "apiVersion": "2015-05-01-preview",
-                    "name": "/AllowAllMicrosoftAzureIps",
-                    "location": "[parameters('location')]",
-                    "dependsOn": [
-                        "[variables('sqlServerName')]"
-                    ],
-                    "properties": {
-                        "endIpAddress": "0.0.0.0",
-                        "startIpAddress": "0.0.0.0"
-                    }
-                }
-            ]
+                "createMode": "Default"                
+            }
+        },
+           {
+            "type": "Microsoft.DBforMySQL/servers/databases",
+            "apiVersion": "2017-12-01",
+            "name": "[concat(variables('mySqlServerName'), '/weather')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', variables('mySqlServerName'))]"
+            ],
+            "properties": {
+                "charset": "latin1",
+                "collation": "latin1_swedish_ci"
+            }
         },
         {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-06-01",
-            "name": "[variables('storageAccountName')]",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "Standard_LRS",
-                "tier": "Standard"
-            },
-            "kind": "StorageV2",
+            "type": "Microsoft.DBforMySQL/servers/firewallRules",
+            "apiVersion": "2017-12-01",
+            "name": "[concat(variables('mySqlServerName'), '/AllowAllWindowsAzureIps')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/servers', variables('mySqlServerName'))]"
+            ],
             "properties": {
-                "accessTier": "Hot"
-            },
-            "resources": [
-                {
-                    "type": "blobServices/containers",
-                    "apiVersion": "2019-06-01",
-                    "name": "[concat('default/', variables('containerName'))]",
-                    "dependsOn": [
-                        "[variables('storageAccountName')]"
-                    ]
-                }
-            ]
+                "startIpAddress": "0.0.0.0",
+                "endIpAddress": "0.0.0.0"
+            }
         },
         {
             "type": "Microsoft.DataFactory/factories",
@@ -99,11 +96,5 @@
             },
             "properties": {}
         }
-    ],
-    "outputs": {
-          "storageAcctName": {
-            "type": "String",
-            "value": "[variables('storageAccountName')]"
-        }
-    }
+    ]
 }
