@@ -27,18 +27,18 @@ The notebook for this demo explores a data source from the [Azure Open Datasets 
 ## Instructions
 
 ### Create Azure Services
-1. Click this button to create Azure SQL database, and Data Factory 
+1. Click this button to create a MySQL database, and Data Factory 
    
  [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpaladique%2FWorkshop-DataInAzure%2Fmaster%2Ftemplate%2FdeployTemplate.json)
    
-   *Recommended: Once your Azure resources are deployed, pin it to your dashboard in the Azure Portal*
+*Recommended: Once your Azure resources are deployed, pin it to your dashboard in the Azure Portal*
 
 ### Setup Azure Services
 
 1. In the Azure portal, open your MySQL Server (starts with `mysql-`).
 2. Go to **Connection Security** and click **+ Add client IP*** to add a firewall rule for your ip address.
 3. Set **Allow access to Azure Services** to **On**.
-4. Go back to the Overview in MySQL
+4. Go back to the **Overview** in MySQL
 5. Click on the terminal icon at the top of the portal to open the Cloud Shell Terminal.
 
 #### Set up MySQL database in the Cloud Shell
