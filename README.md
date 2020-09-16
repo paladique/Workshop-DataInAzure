@@ -18,7 +18,7 @@ This is a supplemental resource to the Intro to Data Storage in Azure presentati
 
 ## Demo
 
-The notebook for this demo explores a data source from the [Azure Open Datasets Catalog](https://azure.microsoft.com/en-us/services/open-datasets/catalog/) on [NOAA Integrated Surface Data (ISD)](https://azure.microsoft.com/en-us/services/open-datasets/catalog/noaa-integrated-surface-data). We'll be converting the structure of one of these data sets to another with Azure Data factory and using Azure Notebooks to view the data and form our query with [Pandas](https://pandas.pydata.org/).
+The notebook for this demo explores a data source from the [Azure Open Datasets Catalog](https://azure.microsoft.com/en-us/services/open-datasets/catalog/) on [NOAA Integrated Surface Data (ISD)](https://azure.microsoft.com/en-us/services/open-datasets/catalog/noaa-integrated-surface-data). We'll be converting the structure of one of these data sets to another with Azure Data factory and using Azure Machine Learning Studio to view the data and form our query with Python and the [Pandas](https://pandas.pydata.org/) library.
 
 ## Prerequisites
 
@@ -47,7 +47,7 @@ The notebook for this demo explores a data source from the [Azure Open Datasets 
 
 `mysql -h servername.mysql.database.azure.com -u adminname@servername -p`
 
-You're now connected to your new MySQL server. The following commands will set up the database and table:
+You're now connected to your MySQL server. The following commands will set up the database and table:
 
 `CREATE DATABASE weather;`
 `USE weather;`
@@ -70,6 +70,8 @@ CREATE TABLE surfaceLevelWeather(
 
 ### Using the Notebook
 
+Azure Machine Learning Studio will be used to work with the notebook, you may have already completed the creation step. If not refer to the instructions on how to create a [Machine Learning Workspace](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-manage-workspace#create-a-workspace)
+
 7. Download/Clone the notebook content in this repo (`notebook-data` folder)
 8. Go to your created Azure Machine Learning service in the Portal > **Launch Now** to open the Machine Learning Studio
 9. Go to **Notebooks** > **Start Now**
@@ -80,11 +82,11 @@ CREATE TABLE surfaceLevelWeather(
 [my_db]
 host:servername.mysql.database.azure.com
 user:adminname@servername
-password:mypassword
+password: mypassword
 database: mydatabase
  ```
 
-12.   Follow the remaining instructions in the notebook named `Weather and Elevation`
+12. Follow the remaining instructions in the notebook named `Weather and Elevation`
 
 # Cleanup
 
@@ -120,4 +122,4 @@ Locate the name of your resource group and [follow these instructions](https://d
         -  [MS Learn Module: Introduction to machine learning with Python and Azure Notebooks
 ](https://docs.microsoft.com/en-us/learn/paths/intro-to-ml-with-python/)
 
-- Info on [REST](https://www.codecademy.com/articles/what-is-rest) 
+- Info on [REST](https://www.codecademy.com/articles/what-is-rest)
