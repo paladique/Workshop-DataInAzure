@@ -49,13 +49,12 @@ The notebook for this demo explores a data source from the [Azure Open Datasets 
 
 You're now connected to your MySQL server. The following commands will set up the database and table:
 
-`CREATE DATABASE weather;`
 `USE weather;`
 
 ```sql
 CREATE TABLE surfaceLevelWeather(
     id serial PRIMARY KEY,
-    time DATETIME, 
+    time DATETIME,
     latitude DOUBLE,
     longitude DOUBLE,
     elevation DOUBLE,
@@ -70,13 +69,13 @@ CREATE TABLE surfaceLevelWeather(
 
 ### Using the Notebook
 
-Azure Machine Learning Studio will be used to work with the notebook, you may have already completed the creation step. If not refer to the instructions on how to create a [Machine Learning Workspace](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-manage-workspace#create-a-workspace)
+Azure Machine Learning Studio will be used to work with the notebook, you may have already completed the creation step. If not refer to the instructions on how to create a [Machine Learning Workspace](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-manage-workspace#create-a-workspace).
 
 7. Download/Clone the notebook content in this repo (`notebook-data` folder)
 8. Go to your created Azure Machine Learning service in the Portal > **Launch Now** to open the Machine Learning Studio
 9. Go to **Notebooks** > **Start Now**
-10. Under **My Files**, select the upload button and upload the entire notebook folder.
-11. Edit the configuration file named `myconfig.cfg` and replace the `servername` and `adminname` with the values in the overview of MySQL.
+10. Under **My Files**, select the upload folder button (4th button from the left) and upload the entire notebook folder.
+11. Open and edit the configuration file named `myconfig.cfg` and replace the `servername` and `adminname` with the values in the overview of MySQL from the Portal.
 
 ```python
 [my_db]
@@ -86,7 +85,11 @@ password: mypassword
 database: mydatabase
  ```
 
-12. Follow the remaining instructions in the notebook named `Weather and Elevation`
+12. Create a compute instance to run the notebook: in the Compute section, above of the notebook, select the **+** to open the **New compute instance** form.
+13. Select a compute name and change the virtual machine size to `Standard_D1 `, then select **Create**. CPU and Region can stay at their default settings.
+14. Select the created instance from the compute dropdown, it may take a minute or two to create. Select the the Play/Start Compute button to start the instance.
+15. When the computer instance enters a `Running` state, select `Python 3.6 - Azure ML` as the Jupyter kernel.
+16.   Follow the remaining instructions in the notebook named `Weather and Elevation`
 
 # Cleanup
 
