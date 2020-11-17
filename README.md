@@ -18,7 +18,7 @@ This is a supplemental resource to the Intro to Data Storage in Azure presentati
 
 ## Demo
 
-The notebook for this demo explores a data source from the [Azure Open Datasets Catalog](https://azure.microsoft.com/en-us/services/open-datasets/catalog/) on [NOAA Integrated Surface Data (ISD)](https://azure.microsoft.com/en-us/services/open-datasets/catalog/noaa-integrated-surface-data). We'll be converting the structure of one of these data sets to another with Azure Data factory and using Azure Machine Learning Studio to view the data and form our query with Python and the [Pandas](https://pandas.pydata.org/) library.
+The notebook for this demo explores a data source from the [Azure Open Datasets Catalog](https://azure.microsoft.com/services/open-datasets/catalog/?WT.mc_id=academic-0000-jasmineg) on [NOAA Integrated Surface Data (ISD)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data?WT.mc_id=academic-0000-jasmineg). We'll be converting the structure of one of these data sets to another with Azure Data factory and using Azure Machine Learning Studio to view the data and form our query with Python and the [Pandas](https://pandas.pydata.org/) library.
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ The notebook for this demo explores a data source from the [Azure Open Datasets 
 ### Create Azure Services
 1. Click this button to create a MySQL database, and Data Factory 
    
- [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpaladique%2FWorkshop-DataInAzure%2Fmaster%2Ftemplate%2FdeployTemplate.json)
+ [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/?WT.mc_id=academic-0000-jasmineg#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpaladique%2FWorkshop-DataInAzure%2Fmaster%2Ftemplate%2FdeployTemplate.json)
    
 *Recommended: Once your Azure resources are deployed, pin it to your dashboard in the Azure Portal*
 
@@ -69,7 +69,7 @@ CREATE TABLE surfaceLevelWeather(
 
 ### Using the Notebook
 
-Azure Machine Learning Studio will be used to work with the notebook, you may have already completed the creation step. If not refer to the instructions on how to create a [Machine Learning Workspace](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-manage-workspace#create-a-workspace).
+Azure Machine Learning Studio will be used to work with the notebook, you may have already completed the creation step. If not refer to the instructions on how to create a [Machine Learning Workspace](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace?WT.mc_id=academic-0000-jasmineg#create-a-workspace).
 
 7. Download/Clone the notebook content in this repo (`notebook-data` folder)
 8. Go to your created Azure Machine Learning service in the Portal > **Launch Now** to open the Machine Learning Studio
@@ -93,36 +93,36 @@ database: mydatabase
 
 # Cleanup
 
-Locate the name of your resource group and [follow these instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal#delete-resource-group)
+Locate the name of your resource group and [follow these instructions](https://docs.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal&WT.mc_id=academic-0000-jasmineg#delete-resource-group)
 
 ## Learn More
 
   -  **Structured**
-     -  [Azure SQL documentation overview](https://docs.microsoft.com/en-us/azure/azure-sql/) 
+     -  [Azure SQL documentation overview](https://docs.microsoft.com/azure/azure-sql/?WT.mc_id=academic-0000-jasmineg) 
         -  [MS Learn Module: Migrate your relational data stored in SQL Server to Azure SQL Database
-](https://docs.microsoft.com/en-us/learn/modules/migrate-sql-server-relational-data/)
-     -  [Azure DB for MySQL documentation overview](https://docs.microsoft.com/en-us/azure/mysql/) 
+](https://docs.microsoft.com/learn/modules/migrate-sql-server-relational-data/?WT.mc_id=academic-0000-jasmineg)
+     -  [Azure DB for MySQL documentation overview](https://docs.microsoft.com/azure/mysql/?WT.mc_id=academic-0000-jasmineg) 
         -  [MS Learn Module: Migrate on-premises MySQL databases to Azure Database for MySQL
-](https://docs.microsoft.com/en-us/learn/modules/migrate-on-premises-mysql-databases/)
-     -  [Azure DB for Postgres documentation overview](https://docs.microsoft.com/en-us/azure/postgresql/) 
+](https://docs.microsoft.com/learn/modules/migrate-on-premises-mysql-databases/?WT.mc_id=academic-0000-jasmineg)
+     -  [Azure DB for Postgres documentation overview](https://docs.microsoft.com/azure/postgresql/?WT.mc_id=academic-0000-jasmineg) 
         -  [MS Learn Module:Migrate on-premises PostgreSQL databases to Azure Database for PostgreSQL
- ](https://docs.microsoft.com/en-us/learn/modules/migrate-on-premises-postgresql-databases/)
+ ](https://docs.microsoft.com/learn/modules/migrate-on-premises-postgresql-databases/?WT.mc_id=academic-0000-jasmineg)
   -  **Unstructured and Semi-structured**
-     -  [Storage account (Blobs, files, queues, disks, table, Data Lake) documentation overview](https://docs.microsoft.com/en-us/azure/storage/) 
-        -  [MS Learn Modules on Storage Accounts](https://docs.microsoft.com/en-us/learn/browse/?term=azure%20storage)
-     -  [Cosmos DB documentation overview](https://docs.microsoft.com/en-us/azure/cosmos-db/) 
+     -  [Storage account (Blobs, files, queues, disks, table, Data Lake) documentation overview](https://docs.microsoft.com/azure/storage/?WT.mc_id=academic-0000-jasmineg) 
+        -  [MS Learn Modules on Storage Accounts](https://docs.microsoft.com/learn/browse/?term=azure storage&WT.mc_id=academic-0000-jasmineg)
+     -  [Cosmos DB documentation overview](https://docs.microsoft.com/azure/cosmos-db/?WT.mc_id=academic-0000-jasmineg) 
         -  [MS Learn Module: Work with NoSQL data in Azure Cosmos DB
- ](https://docs.microsoft.com/en-us/learn/paths/work-with-nosql-data-in-azure-cosmos-db/)
+ ](https://docs.microsoft.com/learn/paths/work-with-nosql-data-in-azure-cosmos-db/?WT.mc_id=academic-0000-jasmineg)
   - **Additional services**
-     -  [Azure Data Factory documentation overview](https://docs.microsoft.com/en-us/azure/data-factory/) 
+     -  [Azure Data Factory documentation overview](https://docs.microsoft.com/azure/data-factory/?WT.mc_id=academic-0000-jasmineg) 
         -  [MS Learn Module: Create production workloads on Azure Databricks with Azure Data Factory
-](https://docs.microsoft.com/en-us/learn/modules/create-production-workloads-azure-databricks-azure-data-factory/)
-     -  [Azure Stream Analytics documentation overview](https://docs.microsoft.com/en-us/azure/stream-analytics/) 
-        -  [Implement a Data Streaming Solution with Azure Streaming Analytics](https://docs.microsoft.com/en-us/learn/paths/implement-data-streaming-with-asa/)
-     -  [Azure Databricks documentation overview](https://docs.microsoft.com/en-us/azure/azure-databricks/) 
-        -  [MS Learn Module: Read and write data in Azure Databricks](https://docs.microsoft.com/en-us/learn/modules/read-write-data-azure-databricks/)
-     -  [Azure Notebooks documentation overview](https://docs.microsoft.com/en-us/azure/notebooks/) 
+](https://docs.microsoft.com/learn/modules/create-production-workloads-azure-databricks-azure-data-factory/?WT.mc_id=academic-0000-jasmineg)
+     -  [Azure Stream Analytics documentation overview](https://docs.microsoft.com/azure/stream-analytics/?WT.mc_id=academic-0000-jasmineg) 
+        -  [Implement a Data Streaming Solution with Azure Streaming Analytics](https://docs.microsoft.com/learn/paths/implement-data-streaming-with-asa/?WT.mc_id=academic-0000-jasmineg)
+     -  [Azure Databricks documentation overview](https://docs.microsoft.com/azure/azure-databricks/?WT.mc_id=academic-0000-jasmineg) 
+        -  [MS Learn Module: Read and write data in Azure Databricks](https://docs.microsoft.com/learn/modules/read-write-data-azure-databricks/?WT.mc_id=academic-0000-jasmineg)
+     -  [Azure Notebooks documentation overview](https://docs.microsoft.com/azure/notebooks/?WT.mc_id=academic-0000-jasmineg) 
         -  [MS Learn Module: Introduction to machine learning with Python and Azure Notebooks
-](https://docs.microsoft.com/en-us/learn/paths/intro-to-ml-with-python/)
+](https://docs.microsoft.com/learn/paths/intro-to-ml-with-python/?WT.mc_id=academic-0000-jasmineg)
 
 - Info on [REST](https://www.codecademy.com/articles/what-is-rest)
