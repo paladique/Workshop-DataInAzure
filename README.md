@@ -109,10 +109,9 @@ Locate the name of your resource group and [follow these instructions](https://d
  ](https://docs.microsoft.com/learn/modules/migrate-on-premises-postgresql-databases/?WT.mc_id=academic-0000-jasmineg)
   -  **Unstructured and Semi-structured**
      -  [Storage account (Blobs, files, queues, disks, table, Data Lake) documentation overview](https://docs.microsoft.com/azure/storage/?WT.mc_id=academic-0000-jasmineg) 
-        -  [MS Learn Modules on Storage Accounts](https://docs.microsoft.com/learn/browse/?term=azure storage&WT.mc_id=academic-0000-jasmineg)
+        -  [MS Learn Modules on Storage Accounts](https://docs.microsoft.com/learn/browse/?term=storage&WT.mc_id=academic-0000-jasmineg)
      -  [Cosmos DB documentation overview](https://docs.microsoft.com/azure/cosmos-db/?WT.mc_id=academic-0000-jasmineg) 
-        -  [MS Learn Module: Work with NoSQL data in Azure Cosmos DB
- ](https://docs.microsoft.com/learn/paths/work-with-nosql-data-in-azure-cosmos-db/?WT.mc_id=academic-0000-jasmineg)
+        -  [MS Learn Module: Work with NoSQL data in Azure Cosmos DB](https://docs.microsoft.com/learn/paths/work-with-nosql-data-in-azure-cosmos-db/?WT.mc_id=academic-0000-jasmineg)
   - **Additional services**
      -  [Azure Data Factory documentation overview](https://docs.microsoft.com/azure/data-factory/?WT.mc_id=academic-0000-jasmineg) 
         -  [MS Learn Module: Create production workloads on Azure Databricks with Azure Data Factory
